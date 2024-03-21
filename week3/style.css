@@ -1,0 +1,46 @@
+* {
+  font-family: "Truculenta", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+body {
+  font-size: 1.2rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: maroon;
+  font-weight: 900;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.6rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: brown;
+}
+a {
+  font-size: 1.4rem;
+  color: blue;
+}
+p {
+  font-family: "Noticia Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.4rem;
+  padding-bottom: 15px;
+}
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+ {
+  font-family: "Truculenta", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
