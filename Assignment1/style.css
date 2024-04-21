@@ -9,6 +9,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* Used this font as it's simple easy to read and applys a more laid back look which suits the nature of the assignment */
 h1 {
   font-size: 2.5rem;
   color: #B2491C;
@@ -21,7 +22,29 @@ h2 {
   font-weight: 900;
   text-align: center;
 }
+a:link {
+  color: #B2491C;
+  background-color: transparent;
+  text-decoration: none;
+}
 
+a:visited {
+  color: rgb(250, 213, 145);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: blue;
+  background-color: transparent;
+  text-decoration: underline;
+}
 h3 {
   font-size: 1.6rem;
   padding-top: 2px;
