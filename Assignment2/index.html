@@ -9,33 +9,26 @@
 </head>
 <body>
   <body>
-  
+    <video id="backgroundVideoBlurred" autoplay loop muted>
+      <source src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4" type="video/mp4">
+    </video>
   <!-- Header Section -->
   <header>
     <h1>Media Player Website</h1>
   </header>
   <div class="overlay" onclick="removeOverlay()">
     <div class="overlay-text-container">
-        <div class="overlay-text">Exprience (click anywhere)</div>
+        <div class="overlay-text">Assignment 2 Video Art Page (click anywhere)</div>
     </div>
 </div>
   <!-- Navigation Section -->
-  <nav>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Videos</a></li>
-      <li><a href="#">Music</a></li>
-      <li><a href="#">Playlists</a></li>
-      <!-- Add or remove navigation items as needed -->
-    </ul>
-  </nav>
 
   <!-- Main Content Section -->
   <main class="container">
     <!-- Media Player Section -->
-    <div class="media-player">
-      <video id="backgroundVideo" autoplay loop>
-        <source id="backgroundVideo" src="miac.mp4" type="video/mp4">
+    <div class="video-container" id="videoContainer">
+      <video id="backgroundVideo" loop>
+        <source id="backgroundVideo" src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4" type="video/mp4">
       </video>
       <div class="custom-controls">
         <button id="play-pause-btn" onclick="togglePlayPause()">
@@ -49,6 +42,15 @@
 
     <!-- Additional Content Section -->
     <section>
+      <nav>
+        <ul>
+          <li><a href="#" onclick="showContent('Description')">Description</a></li>
+          <li><a href="#" onclick="showContent('Artist')">Artist</a></li>
+          <li><a href="#" onclick="showContent('Other Works')">Other Works</a></li>
+          <li><a href="#" onclick="showContent('Refrences')">Refrence</a></li>
+        </ul>
+        <div id="content"></div>
+      </nav>
       <h2>Additional Content</h2>
       <p>This is where you can showcase any other relevant content.</p>
       <!-- Add more content as needed -->
@@ -57,11 +59,7 @@
 
   <!-- Footer Section -->
   <footer>
-    <p>© 2024 Media Player Website. All rights reserved.</p>
-    <a href="https://icons8.com/icon/59862/play">Play</a> icon by
-    <a href="https://icons8.com">Icons8</a>
-    <a href="https://icons8.com/icon/61012/pause">Pause</a> icon by
-    <a href="https://icons8.com">Icons8</a>
+  
   </footer>
 
 

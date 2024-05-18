@@ -1,21 +1,38 @@
-body, html {
+html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow: hidden;
-}
+  } 
 .video-container {
     display: none; /
+    position: fixed;
     z-index: -1; 
-    max-width: 80vw; 
-    max-height: 80vh; 
+
+}
+p {
+    color: white; /* Text color */
+    font-size: 24px;
+}
+h1 {
+    color: white; /* Text color */
+    font-size: 24px;
+}
+h2 {
+    color: white; /* Text color */
+    font-size: 24px;
+}
+footer {
+    color: white; /* Text color */
+    font-size: 24px;
 }
 video {
-    max-width: 100%;
-    max-height: 100%;
+    display: block;
+    margin: auto;
+    max-width: 50%;
+    max-height: 50%;
     object-fit: contain;
     pointer-events: none;
 }
+
 .overlay {
     position: fixed;
     top: 0;
@@ -27,7 +44,13 @@ video {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.5s;
 }
+.overlay.fade-out {
+    opacity: 0;
+}
+/* was going to add fade out using key frames but couldn't get it to work */
 .overlay-text-container {
     background-color: transparent;
     padding: 20px;
@@ -37,21 +60,47 @@ video {
     font-size: 24px;
     text-align: center;
 }
-.controls-container {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#backgroundVideoBlurred {
+    position: fixed;
+    left: -2em;
+    top: -1em;
+    min-width: 150%; 
+    min-height: 150%;
+    object-fit: fill;
+    filter: blur(10px); 
+    z-index: -1
+    ; 
 }
-.control-button {
-    background-color: rgba(255, 255, 255, 0.7);
-    color: black;
-    border: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4d215d;
+    text-align: center; /* Centered the list to add focus on video*/
+  }
+  
+  li {
+    display: inline-block; 
+  }
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: black;
+  }
+
+  #content {
+    display: none; /* Hide the content initially */
+    margin-top: 20px; /* Add some space between the list and the content */
+    text-align: center; /* Center the text */
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
