@@ -2,52 +2,120 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <!-- add the font family of your choice -->
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer=""></script>
 </head>
 <body>
   <body>
+     <!-- This is the background video, this changes as the user selects other videos on the page. -->
     <video id="backgroundVideoBlurred" autoplay loop muted>
       <source src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4" type="video/mp4">
     </video>
   <!-- Header Section -->
   <header>
     <h1>Ryan Zibell Assignment 2 Video Art Page</h1>
-    <h2>Miac Video Art Piece</h2>
+    <h2>Video Art Website</h2>
   </header>
-  <!-- Creating an overlay to create a sense of mystery and curiosity. -->
+  <!-- Creating an overlay to create a sense of mystery and curiosity. creating a more exciting website to explore -->
   <div class="overlay" onclick="removeOverlay()"> 
     <div class="overlay-text-container">
         <div class="overlay-text">Assignment 2 Video Art Page (click anywhere)</div>
     </div>
 </div>
-  <!-- Main Content Section -->
+<div class="Border">
+  
   <main class="container">
-    <!-- Media Player Section -->
+    <!-- Titled background video to remind me it needs to sit in the background because of the overlay. -->
     <div class="video-container" id="videoContainer">
       <video id="backgroundVideo" loop>
         <source id="backgroundVideo" src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4" type="video/mp4">
       </video>
-      <div class="custom-controls">
-        <button id="play-pause-btn" onclick="togglePlayPause()">
-          <img id="play-pause-img" src="https://img.icons8.com/ios-glyphs/30/play--v1.png" alt="Play Button" width="24" height="24">
+    </section>
+    <section class="video-title">
+    </section>
+      <section class="video-controls">
+        <!-- These are the video controls, added play and pause functionality, loop video functionality and volume control/mute didnt feel need to add further controls as it was unnescarly for the genre of the website -->
+        <button id="play-pause-btn">
+          <img
+            id="play-pause-img"
+            src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
+            alt="Play Button"
+            width="24"
+            height="24"
+          />
         </button>
+        <button id="loop-btn">
+          <img
+            id="loop-img"
+            src="https://img.icons8.com/ios-glyphs/30/repeat.png"
+            alt="Loop Button"
+            width="24"
+            height="24"
+          />
+        </button>
+  
         <div class="progress-bar">
-          <span id="progress-bar-fill" style="width: 24.5129%;"></span>
+          <span id="progress-bar-fill"></span>
         </div>
-      </div>
+          <button id="mute-unmute-btn">
+            <img
+              id="mute-unmute-img"
+              src="https://img.icons8.com/ios-glyphs/30/no-audio--v1.png"
+              alt="Mute Button"
+              width="24"
+              height="24"
+            />
+          </button>
+        <button id="decrease-volume-btn">
+          <img
+            id="decrease-volume-img"
+            src="https://img.icons8.com/ios-glyphs/30/low-volume.png"
+            alt="Decrease volume Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        <button id="increase-volume-btn">
+          <img
+            id="increase-volume-img"
+            src="https://img.icons8.com/ios-glyphs/30/high-volume--v1.png"
+            alt="Increase volume Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        
+      </section>
+      <section class="timeline">
+      
+      </section>
+      <section class="video-list">
+        <!-- We use buttons, whenever user clicks on them, the correspoding 
+        video will be played  -->
+        <button id="first-video-btn">
+          <img id="first-video-img" src="Featured.PNG" alt="Featured" />
+        </button>
+        <button id="second-video-btn">
+          <img id="second-video-img" src="Paint.PNG" alt="paint" />
+        </button>
+        <button id="third-video-btn">
+          <img id="third-video-img" src="scope.PNG" alt="scope" />
+        </button>
+        <button id="fourth-video-btn">
+          <img id="fourth-video-img" src="Smoke.PNG" alt="Smoke" />
+        </button>
+      </section>
     </div>
-
-    <!-- Information menu -->
+  </div>
+    <!-- Menu items hides info until clicked on. set the menu to below the video to add emphasis on the videos -->
     <section>
       <nav>
         <ul>
           <li><a href="#" onclick="showContent('Description')">Description</a></li>
           <li><a href="#" onclick="showContent('Artist')">Artist</a></li>
           <li><a href="#" onclick="showContent('Other Works')">Other Works</a></li>
-          <li><a href="#" onclick="showContent('Refrences')">Refrence</a></li>
+          <li><a href="#" onclick="showContent('Refrences')">Reference</a></li>
         </ul>
         <!-- When menu is interacted with it adds text (which is in the javascript) -->
         <div id="content"></div>
