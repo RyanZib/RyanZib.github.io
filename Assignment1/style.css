@@ -10,6 +10,8 @@ body {
 }
 
 /* Used this font as it's simple easy to read and applys a more laid back look which suits the nature of the assignment */
+/* My goal with the layout was for everything to have a central position, this keeps focus on the Video and provides very easy
+navigation */
 h1 {
   font-size: 2.5rem;
   color: #B2491C;
