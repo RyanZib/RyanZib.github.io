@@ -7,20 +7,39 @@
   <script src="script.js" defer=""></script>
 </head>
 <body>
-<div id="iconZone">
-    <div class="icon" draggable="true" data-sound="Drums.wav" id="icon1">Icon 1</div>
-    <div class="icon" draggable="true" data-sound="Bass.wav" id="icon2">Icon 2</div>
-    <div class="icon" draggable="true" data-sound="synth.wav" id="icon3">Icon 3</div>
+  <h1>
+    A3 Drag and drop music making game
+  </h1>
+  <H2>
+    How to play:
+  </H2>
+  <p>
+    Drag and drop instruments onto the stage to start making music. Use Master volume to
+    control volume of all instruments. Click on intrument to individually adjust volume.
+    Drag instruments into the bin to get to remove it from your stage.
+  </p>
+  <div class="container">
+    <div id="iconZone">
+      <div class="icon" draggable="true" data-sound="Drums.wav" id="icon1"> <img src="Drumkit.png"></div>
+      <div class="icon" draggable="true" data-sound="Bass.wav" id="icon2"> <img src="bass.png"></div>
+      <div class="icon" draggable="true" data-sound="synth.wav" id="icon3"> <img src="synth.png"></div>
+      <div class="icon" draggable="true" data-sound="Disg.wav" id="icon4"> <img src="Guitarheavy.png"></div>
+      <div class="icon" draggable="true" data-sound="Piano.wav" id="icon5"> <img src="piano.png"></div>
+      <div class="icon" draggable="true" data-sound="Plucky.wav" id="icon6"> <img src="pluckbass.png"></div>
+      <div class="icon" draggable="true" data-sound="Drums2.wav" id="icon7"> <img src="Drumkit2.png"></div>
+      <div class="icon" draggable="true" data-sound="Sadg.wav" id="icon8"> <img src="Acgui.png"></div>
+    </div>
+    <div id="dropArea">
+        <p>Drop Instruments here </p> <div id="bpmIndicator"></div>
+    </div>
+    
 </div>
-<div id="dropArea">
-    <p>Drop icons here</p>
+<div id="volumeControls">
+    <label for="masterVolume">Master Volume: </label>
+    <input type="range" id="masterVolume" min="0" max="1" step="0.01" value="1">
+    <div id="instrumentVolume"></div>
+    <div id="bin">Bin</div>
 </div>
-<div id="controls">
-  <label for="masterVolume">Master Volume:</label>
-  <input type="range" id="masterVolume" min="0" max="1" step="0.01" value="1">
-</div>
-<div id="instrumentVolume"></div>
-<div id="bin">Bin</div>
 
 
   

@@ -4,6 +4,8 @@ const masterVolumeControl = document.getElementById('masterVolume');
 const instrumentVolumeContainer = document.getElementById('instrumentVolume');
 let sounds = [];
 let syncTime = 0;
+let loopDuration = 0;
+let isPlaying = false;
 
 // Store initial positions
 const initialPositions = {};
@@ -16,9 +18,8 @@ document.querySelectorAll('.icon').forEach(icon => {
         parent: icon.parentElement
     };
 
-    icon.setAttribute('data-text', icon.textContent);
     icon.addEventListener('dragstart', (event) => {
-        event.dataTransfer.setData('text', event.target.textContent);
+        event.dataTransfer.setData('text', event.target.getAttribute('data-sound'));
     });
 
     icon.addEventListener('click', () => {
@@ -33,7 +34,7 @@ dropArea.addEventListener('dragover', (event) => {
 dropArea.addEventListener('drop', (event) => {
     event.preventDefault();
     const data = event.dataTransfer.getData('text');
-    const draggedElement = document.querySelector(`.icon[data-text='${data}']`);
+    const draggedElement = document.querySelector(`.icon[data-sound='${data}']`);
     const soundFile = draggedElement.getAttribute('data-sound');
 
     // Calculate position within the drop area
@@ -46,7 +47,11 @@ dropArea.addEventListener('drop', (event) => {
 
     console.log(`Dropped: ${data} at X: ${draggedElement.style.left}, Y: ${draggedElement.style.top}`);
 
-    playSound(soundFile, draggedElement);
+    // Check if the sound is already playing
+    const existingSound = sounds.find(({ element }) => element === draggedElement);
+    if (!existingSound) {
+        playSound(soundFile, draggedElement);
+    }
 });
 
 bin.addEventListener('dragover', (event) => {
@@ -56,7 +61,7 @@ bin.addEventListener('dragover', (event) => {
 bin.addEventListener('drop', (event) => {
     event.preventDefault();
     const data = event.dataTransfer.getData('text');
-    const draggedElement = document.querySelector(`.icon[data-text='${data}']`);
+    const draggedElement = document.querySelector(`.icon[data-sound='${data}']`);
     stopSound(draggedElement);
 
     // Reset the element to its initial position
@@ -70,8 +75,9 @@ bin.addEventListener('drop', (event) => {
 });
 
 masterVolumeControl.addEventListener('input', () => {
+    const masterVolume = masterVolumeControl.value;
     sounds.forEach(({ audio }) => {
-        audio.volume = masterVolumeControl.value;
+        audio.volume = masterVolume;
     });
 });
 
@@ -90,18 +96,9 @@ function playSound(soundFile, element) {
     label.textContent = 'Instrument Volume: ';
     label.appendChild(volumeControl);
 
-    instrumentVolumeContainer.innerHTML = '';
-    instrumentVolumeContainer.appendChild(label);
-
     sounds.push({ audio, element, volumeControl });
 
-    if (sounds.length === 1) {
-        audio.play();
-        syncTime = audio.currentTime;
-    } else {
-        audio.currentTime = syncTime;
-        audio.play();
-    }
+    audio.play();
 
     volumeControl.addEventListener('input', () => {
         audio.volume = volumeControl.value;
@@ -112,6 +109,8 @@ function playSound(soundFile, element) {
         instrumentVolumeContainer.innerHTML = '';
         hideInstrumentVolume();
     });
+
+    showInstrumentVolume(element); // Ensure the volume control is displayed when the sound starts playing
 }
 
 function stopSound(element) {
@@ -128,13 +127,19 @@ function stopSound(element) {
 function showInstrumentVolume(icon) {
     const soundObject = sounds.find(({ element }) => element === icon);
     if (soundObject) {
+        instrumentVolumeContainer.innerHTML = '';
         const volumeControl = soundObject.volumeControl.cloneNode(true);
         const label = document.createElement('label');
         label.textContent = 'Instrument Volume: ';
         label.appendChild(volumeControl);
 
-        instrumentVolumeContainer.innerHTML = '';
         instrumentVolumeContainer.appendChild(label);
+
+        volumeControl.addEventListener('input', () => {
+            soundObject.audio.volume = volumeControl.value;
+        });
+    } else {
+        console.log(`No sound object found for ${icon.id}`);
     }
 }
 

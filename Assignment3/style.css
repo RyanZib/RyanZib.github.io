@@ -1,5 +1,11 @@
 body {
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }
 
 #controls {
@@ -7,23 +13,48 @@ body {
     margin: 20px;
 }
 
+#instrumentVolume {
+    text-align: center;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 20px auto;
+}
+
 #iconZone {
-    width: 300px;
-    height: 100px;
+    width: 30%;
+    height: 300px;
     border: 2px solid #ccc;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin: 20px auto;
     position: relative;
+    width: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px auto;
 }
 
 #dropArea {
-    width: 300px;
+    width: 65%;
     height: 300px;
-    border: 2px dashed #ccc;
+    border: 2px dashed #ff0000;
     position: relative;
-    margin: 20px auto;
+    background-image: url('Stage.jpg');
+    background-size: cover; 
+    background-position: center; 
+}
+
+#dropArea p {
+    color: white; 
+    font-size: 16px; 
+    text-align: center; 
 }
 
 .icon {
@@ -37,6 +68,14 @@ body {
     position: relative;
 }
 
+
+.icon img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
 #bin {
     width: 50px;
     height: 50px;
@@ -47,4 +86,34 @@ body {
     position: absolute;
     bottom: 20px;
     right: 20px;
+}
+
+#volumeControls {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+#bpmIndicator {
+    width: 20px;
+    height: 20px;
+    background-color: #b81010;
+    margin-top: 10px;
+    border-radius: 50%;
+    animation: pulse 0.5s infinite;
+   
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
