@@ -3,8 +3,6 @@ const bin = document.getElementById('bin');
 const masterVolumeControl = document.getElementById('masterVolume');
 const instrumentVolumeContainer = document.getElementById('instrumentVolume');
 let sounds = [];
-let syncTime = 0;
-let loopDuration = 0;
 let isPlaying = false;
 
 // Store initial positions
@@ -50,7 +48,9 @@ dropArea.addEventListener('drop', (event) => {
     // Check if the sound is already playing
     const existingSound = sounds.find(({ element }) => element === draggedElement);
     if (!existingSound) {
+        stopAllSounds();
         playSound(soundFile, draggedElement);
+        restartAllSounds();
     }
 });
 
@@ -83,7 +83,7 @@ masterVolumeControl.addEventListener('input', () => {
 
 function playSound(soundFile, element) {
     const audio = new Audio(soundFile);
-    audio.loop = true; // Set loop to true for continuous playback
+    audio.loop = true;
     const volumeControl = document.createElement('input');
     volumeControl.type = 'range';
     volumeControl.min = '0';
@@ -98,8 +98,6 @@ function playSound(soundFile, element) {
 
     sounds.push({ audio, element, volumeControl });
 
-    audio.play();
-
     volumeControl.addEventListener('input', () => {
         audio.volume = volumeControl.value;
     });
@@ -110,7 +108,7 @@ function playSound(soundFile, element) {
         hideInstrumentVolume();
     });
 
-    showInstrumentVolume(element); // Ensure the volume control is displayed when the sound starts playing
+    showInstrumentVolume(element);
 }
 
 function stopSound(element) {
@@ -122,6 +120,19 @@ function stopSound(element) {
         instrumentVolumeContainer.innerHTML = '';
         hideInstrumentVolume();
     }
+}
+
+function stopAllSounds() {
+    sounds.forEach(({ audio }) => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+}
+
+function restartAllSounds() {
+    sounds.forEach(({ audio }) => {
+        audio.play();
+    });
 }
 
 function showInstrumentVolume(icon) {
@@ -138,8 +149,6 @@ function showInstrumentVolume(icon) {
         volumeControl.addEventListener('input', () => {
             soundObject.audio.volume = volumeControl.value;
         });
-    } else {
-        console.log(`No sound object found for ${icon.id}`);
     }
 }
 
