@@ -7,6 +7,8 @@
   <script src="script.js" defer=""></script>s
 </head>
 <body>
+ <!-- set up a little area for the page intro text, this just allowed me to style it easier. --> 
+  <div class="pageintro">
   <h1>
     A3 Drag and drop music making game
   </h1>
@@ -18,6 +20,10 @@
     control volume of all instruments. Click on intrument to individually adjust volume.
     Drag instruments into the bin to get to remove it from your stage.
   </p>
+</div>
+<!-- this is where I add the inttruments making sure the icons are draggable by setting it to "true" and have a sound attached
+so the java script can collect the sound. Rather than listing the sounds in java script
+this makes implemetation of future intruments easy as more can be added to this list with out editing of the java script -->
   <div class="container">
     <div id="iconZone">
       <div class="icon" draggable="true" data-sound="Drums.wav" id="icon1"> <img src="Drumkit.png"></div>
@@ -29,16 +35,21 @@
       <div class="icon" draggable="true" data-sound="Drums2.wav" id="icon7"> <img src="Drumkit2.png"></div>
       <div class="icon" draggable="true" data-sound="Sadg.wav" id="icon8"> <img src="Acgui.png"></div>
     </div>
+    <!-- made a drop area zone which I resized to my liking in css and also can reference this area in Java script  -->
     <div id="dropArea">
         <p>Drop Instruments here </p> <div id="bpmIndicator"></div>
     </div>
     
 </div>
+<!-- same thing as the drop zone made a little container for the bin, where javascript can reconigse that area to perform it's function -->
+<div id="bin">Bin</div>
 <div id="volumeControls">
+  <!-- included a master volume slider here, seeting it's max and min values, you dont see this for the 
+  instrument volume slider on the html as java script needs to find the instrument first before placing the slider
+set out the zone for it though as when the instrument is found, java script will place the slider in. -->
     <label for="masterVolume">Master Volume: </label>
     <input type="range" id="masterVolume" min="0" max="1" step="0.01" value="1">
     <div id="instrumentVolume"></div>
-    <div id="bin">Bin</div>
 </div>
 
 

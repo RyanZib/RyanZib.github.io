@@ -5,7 +5,7 @@ const instrumentVolumeContainer = document.getElementById('instrumentVolume');
 let sounds = [];
 let isPlaying = false;
 
-// Store initial positions
+// Stores inital icon postions so when instrument is put in the bin they can return to the propper spot
 const initialPositions = {};
 
 document.querySelectorAll('.icon').forEach(icon => {
@@ -15,6 +15,7 @@ document.querySelectorAll('.icon').forEach(icon => {
         left: icon.style.left,
         parent: icon.parentElement
     };
+// so sound is found when dragging over, most of these codes where through the help of https://forum.freecodecamp.org/t/javascript-html-drag-and-drop-with-sound/408197
 
     icon.addEventListener('dragstart', (event) => {
         event.dataTransfer.setData('text', event.target.getAttribute('data-sound'));

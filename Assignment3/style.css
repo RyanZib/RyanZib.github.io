@@ -6,18 +6,39 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
+    background-color: #333;
+}
+/* here you can see that page intro container, just so i didn't have to allighn the sext everytime when styling the titles and paragraphs */
+.pageintro {
+    text-align: center;
 }
 
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #ffffff; 
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    color: #e47878; 
+}
+
+p {
+    font-size: 1.2em;
+    margin-top: 0;
+    color: #b4b1b1; 
+}
+/* when with basic text colours to stand out agaisnt the background. chose red for h2 as it pops out just a little more */
+
+/* same thing with the page intro area, just made it easier to edit and add other controls in didn't have to include independent styling */
 #controls {
     text-align: center;
     margin: 20px;
 }
 
-#instrumentVolume {
-    text-align: center;
-    margin: 20px;
-}
-
+/* setting up the two zones, so I could space them more easily if they both sit in a container */
 .container {
     display: flex;
     justify-content: space-between;
@@ -26,47 +47,42 @@ body {
 }
 
 #iconZone {
-    width: 30%;
+    width: 300px;
     height: 300px;
     border: 2px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    position: relative;
-    width: 300px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin: 20px auto;
-}
+    background-image: url('roadcase.png');
+    background-size: cover; /* so image covers the whole area */
 
+}
 #dropArea {
     width: 65%;
     height: 300px;
-    border: 2px dashed #ff0000;
+    border: 2px dashed #ff0000; /* so zone pops out a little more */
     position: relative;
     background-image: url('Stage.jpg');
     background-size: cover; 
     background-position: center; 
+    background-size: cover; /* image to cover the whole area */
 }
 
 #dropArea p {
     color: white; 
     font-size: 16px; 
     text-align: center; 
-}
+} /* just a little instructio to make website more clear. */
 
 .icon {
     width: 50px;
     height: 50px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
     text-align: center;
     line-height: 50px;
     cursor: pointer;
     position: relative;
-}
+} /* so icons are evenly sized and spaced in the icon zone */
 
 
 .icon img {
@@ -74,7 +90,8 @@ body {
     max-height: 100%;
     display: block;
     pointer-events: none;
-}
+ 
+} /* so icon imgs fit in the icons, have problems with getting image to fill the whole icon area */
 
 #bin {
     width: 50px;
@@ -83,37 +100,14 @@ body {
     color: white;
     text-align: center;
     line-height: 50px;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
+    position: relative;
+    margin-top: 10px;
+} /* made red so it's easy to see tried to make the size of the icon for visual cohesion. */
 
 #volumeControls {
     width: 80%;
     margin: 20px auto;
     text-align: center;
-}
-#bpmIndicator {
-    width: 20px;
-    height: 20px;
-    background-color: #b81010;
-    margin-top: 10px;
-    border-radius: 50%;
-    animation: pulse 0.5s infinite;
-   
+    color: #f0f0f0;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.5);
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}

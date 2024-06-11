@@ -25,7 +25,7 @@ body {
 .video-container {
     display: none; /
     position: fixed;
-    z-index: -1; 
+    z-index: -1; /* this ensures video sits behind the overlay */
 
 }
 /* My goal with the layout was for everything to have a central position, this keeps focus on the Video and provides very easy
@@ -133,7 +133,7 @@ ul {
 
   #content {
     display: none; /* Hides the text initially so text wont appear until menu item is clicked on */
-    text-align: center; /* Centers the text to match the central a compact viewing of this website */
+    text-align: center; /* Centers the text to match the central and compact viewing of this website */
     background-color: rgb(24, 10, 44); /* went with a daker purple then the menu to ceate a flow in the colour choics which match the aesthetics of the video */
     color: white;
     padding: 20px;
@@ -145,7 +145,7 @@ ul {
     gap: 1rem;
     flex-wrap: nowrap;
   }
-  
+  /* alot of my colour choices are based on the first video, for futrue iterations maybe have the colour change dynamicaaly aswell as with the videos and backgrounds */
   .video-controls button {
     width: 36px;
     height: 36px;
@@ -197,17 +197,17 @@ ul {
     background: none;
     padding: 0;
     cursor: pointer;
-    width: 150px;  /* Set the desired width */
-    height: 80px; /* Set the desired height */
-    overflow: hidden; /* Ensure content does not overflow */
+    width: 150px;  
+    height: 80px; 
+    overflow: hidden; /* Ensures content does not overflow */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Style for the images inside the buttons */
+/* ensuring image fills the button size. */
 .video-list button img {
-    width: 100%;  /* Make the image fill the button */
-    height: 100%; /* Make the image fill the button */
-    object-fit: cover; /* Cover the button area without distortion */
+    width: 100%;  /* Makes the image fill the button */
+    height: 100%; 
+    object-fit: cover; /* Covers the button area without distortion */
 }
