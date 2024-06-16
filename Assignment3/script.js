@@ -46,7 +46,7 @@ dropArea.addEventListener('drop', (event) => {
 
     console.log(`Dropped: ${data} at X: ${draggedElement.style.left}, Y: ${draggedElement.style.top}`);
 
-    // Check if the sound is already playing
+    // Check if the sound is already playing so i doesnt double up when moved around in drop zone.
     const existingSound = sounds.find(({ element }) => element === draggedElement);
     if (!existingSound) {
         stopAllSounds();
@@ -54,7 +54,7 @@ dropArea.addEventListener('drop', (event) => {
         restartAllSounds();
     }
 });
-
+//if user drags over bin stops sound and resets element to initial postion.
 bin.addEventListener('dragover', (event) => {
     event.preventDefault();
 });
@@ -65,7 +65,7 @@ bin.addEventListener('drop', (event) => {
     const draggedElement = document.querySelector(`.icon[data-sound='${data}']`);
     stopSound(draggedElement);
 
-    // Reset the element to its initial position
+    // Resets the element to its initial position
     const initialPosition = initialPositions[draggedElement.id];
     draggedElement.style.position = '';
     draggedElement.style.left = initialPosition.left;
@@ -81,7 +81,7 @@ masterVolumeControl.addEventListener('input', () => {
         audio.volume = masterVolume;
     });
 });
-
+//so it loops, also individual instrument volume.
 function playSound(soundFile, element) {
     const audio = new Audio(soundFile);
     audio.loop = true;
@@ -92,7 +92,7 @@ function playSound(soundFile, element) {
     volumeControl.step = '0.01';
     volumeControl.value = '1';
     volumeControl.style.width = '60px';
-
+//creates a volume slider on page.
     const label = document.createElement('label');
     label.textContent = 'Instrument Volume: ';
     label.appendChild(volumeControl);
@@ -103,15 +103,8 @@ function playSound(soundFile, element) {
         audio.volume = volumeControl.value;
     });
 
-    audio.addEventListener('ended', () => {
-        sounds = sounds.filter(sound => sound.audio !== audio);
-        instrumentVolumeContainer.innerHTML = '';
-        hideInstrumentVolume();
-    });
-
-    showInstrumentVolume(element);
 }
-
+//so music stops when icon dragged into bin
 function stopSound(element) {
     const soundObject = sounds.find(({ element: el }) => el === element);
     if (soundObject) {
@@ -135,7 +128,7 @@ function restartAllSounds() {
         audio.play();
     });
 }
-
+//forgot what this was think it's to find the sound the volume fader is controlling
 function showInstrumentVolume(icon) {
     const soundObject = sounds.find(({ element }) => element === icon);
     if (soundObject) {
@@ -152,7 +145,7 @@ function showInstrumentVolume(icon) {
         });
     }
 }
-
+//hides it after element is deleted, i think also forgot this one.
 function hideInstrumentVolume() {
     instrumentVolumeContainer.innerHTML = '';
 }

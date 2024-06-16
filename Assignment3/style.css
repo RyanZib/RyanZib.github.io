@@ -41,7 +41,7 @@ p {
 /* setting up the two zones, so I could space them more easily if they both sit in a container */
 .container {
     display: flex;
-    justify-content: space-between;
+    align-items: center; /* aligns 2 zones on page */
     width: 80%;
     margin: 20px auto;
 }
@@ -73,7 +73,7 @@ p {
     color: white; 
     font-size: 16px; 
     text-align: center; 
-} /* just a little instructio to make website more clear. */
+} /* just a little instructions to make website more clear. */
 
 .icon {
     width: 50px;
